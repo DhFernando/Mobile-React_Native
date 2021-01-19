@@ -4,7 +4,7 @@ import React , { useState } from 'react';
 import Header from "./component/Header"
 import Input from "./component/InputTodo"
 
-import { StyleSheet, View 
+import { StyleSheet, View , TouchableWithoutFeedback , Keyboard
         } from 'react-native';
         
 
@@ -14,11 +14,14 @@ export default function App() {
 
   
   return (
-    <View style={styles.container}> 
-        <Header />
- 
-        <Input />
-    </View>
+    <TouchableWithoutFeedback onPress={ ()=>{ Keyboard.dismiss() } } >
+      <View style={styles.container}> 
+          <Header />
+  
+          <Input />
+      </View>
+    </TouchableWithoutFeedback>
+    
   );
 }
 

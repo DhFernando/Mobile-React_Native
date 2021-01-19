@@ -17,15 +17,16 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff'
     },
     header:{
+        flexDirection:"row",
         height:60,
         backgroundColor: "#1a237e" ,
         justifyContent: 'center',
+        alignItems:"center"
       },
       header__text:{
-        marginLeft:10,
+        marginTop:20,
         color : "white",
-        fontWeight:"bold",
-        textAlign:"center"
+        fontWeight:"bold"
 
       },
   

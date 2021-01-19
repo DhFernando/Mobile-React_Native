@@ -1,32 +1,36 @@
-import React , { useState } from 'react';
+import React , { useState , useEffect } from 'react';
 
-import { StyleSheet, Text, View , Button,
-    TextInput , ScrollView , FlatList,
+import { StyleSheet, Text, View , FlatList,
     TouchableOpacity
    } from 'react-native';
 
-export default function TodoList() {
+export default function TodoList( props ) {
 
-    const initUsers = [
-        { key: 1, name: "Leanne Graham"  },
-        { key: 2, name: "Ervin Howell" },
-        { key: 3, name: "Clementine Bauch" },
-        { key: 4, name: "Patricia Lebsack" },
-        { key: 5, name: "Chelsey Dietrich"  },
-        { key: 6, name: "Clementine Bauch" },
-        { key: 7, name: "Patricia Lebsack" },
-        { key: 8, name: "Chelsey Dietrich"  },
-        { key: 9, name: "Clementine Bauch" },
-        { key: 10, name: "Patricia Lebsack" },
-        { key: 11,name: "Chelsey Dietrich"  }
+    const initTodos = [
+        { key: 1, todo: "Leanne Graham"  },
+        { key: 2, todo: "Ervin Howell" },
+        { key: 3, todo: "Clementine Bauch" },
+        { key: 4, todo: "Patricia Lebsack" },
+        { key: 5, todo: "Chelsey Dietrich"  },
+        { key: 6, todo: "Clementine Bauch" },
+        { key: 7, todo: "Patricia Lebsack" },
+        { key: 8, todo: "Chelsey Dietrich"  },
+        { key: 9, todo: "Clementine Bauch" },
+        { key: 10, todo: "Patricia Lebsack" },
+        { key: 11,todo: "Chelsey Dietrich"  }
       ]
        
-      const [users , setUsers] = useState(initUsers)
-     
+      const [todos , setTodos] = useState(initTodos)
     
-      const removeUser = (key) =>{ 
-        setUsers([
-          ...users.filter( user => user.key != key  )
+      useEffect(()=>{
+        if(props.todo != null){
+            setTodos([ ...todos , props.todo ])
+        }
+      } , [ props.todo ])
+    
+      const removeTodo = (key) =>{ 
+        setTodos([
+          ...todos.filter( todo => todo.key != key )
         ])
       }
 
@@ -34,12 +38,12 @@ export default function TodoList() {
         <View style={styles.container}>
             <View style={ styles.list__View } > 
                 <FlatList
-                    data={users} 
+                    data={todos} 
                     numColumns={2}
                     keyExtractor={(item)=>item.key} 
-                    renderItem={(user) => (
-                        <TouchableOpacity onPress={ ()=> removeUser( user.item.key ) }>
-                        <Text style={ styles.user__list }> {  user.item.name } - { user.item.key } </Text>
+                    renderItem={(todo) => (
+                        <TouchableOpacity onPress={ ()=> removeTodo( todo.item.key ) }>
+                            <Text style={ styles.todo__list }> {  todo.item.todo } - { todo.item.key } </Text>
                         </TouchableOpacity>
                     ) }
                     />
@@ -53,7 +57,7 @@ const styles = StyleSheet.create({
     container: { 
       backgroundColor: '#fff'
     },
-    user__list:{
+    todo__list:{
         backgroundColor:"pink",
         margin:20,
         padding:10

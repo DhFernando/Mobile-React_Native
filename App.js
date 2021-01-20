@@ -2,13 +2,13 @@ import React , { useState } from 'react';
 
 import * as Font from 'expo-font'
 
-import Navigator from './src/routes/HomeStack'
+import Navigator from './src/routes/drawer'
 
-import { StyleSheet, View , TouchableWithoutFeedback , Keyboard
-        } from 'react-native';
+import { StyleSheet, View , TouchableWithoutFeedback,
+         Keyboard } from 'react-native';
 
 import AppLoading from 'expo-app-loading';
- 
+
 
 export default function App() {
 
@@ -23,11 +23,8 @@ export default function App() {
           
     <TouchableWithoutFeedback onPress={ ()=>{ Keyboard.dismiss() } } >
       { fontLoad == true ? 
-        (<View style={styles.container}> 
-            {/* <Header /> */}
-            {/* <Input /> */}
-
-            <Navigator />
+        (<View style={styles.container}>          
+              <Navigator />
         </View>): 
         ( <AppLoading
             startAsync={ ()=>loadFont() }

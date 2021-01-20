@@ -9,6 +9,9 @@ export default function ReviewDeatails(props) {
             <Text>
                 Review Details
             </Text>
+            <Text>
+               { props.navigation.getParam( "title" ) }
+            </Text>
             <View style={styles.nav_btn}>
             <Button  title="Goto review "
                 onPress={()=> props.navigation.goBack()}

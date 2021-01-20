@@ -5,9 +5,10 @@ import { StyleSheet, View , Button, TextInput,
     Alert , Keyboard
    } from 'react-native';
 
+
 export default function InputTodo() {
 
-    const [newkey , setKey] = useState(2)
+    const [newkey , setKey] = useState(20)
     const [text , setText] = useState(null)
 
     const [ newTodo , setNewTodo ] = useState(null)
@@ -33,7 +34,7 @@ export default function InputTodo() {
                 <TextInput  style={ styles.input }
                  onChangeText={ (val)=>setText(val) }
                  value={ text } />
-                <Button style={ styles.state_change_btn } title="press me" onPress={()=> addTodo() } />
+                <Button style={ styles.state_change_btn } title="Add new Todo" onPress={()=> addTodo() } />
             </View>
 
             <TodoList todo={newTodo} />

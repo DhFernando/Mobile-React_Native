@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View
-   } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function Header() {
     return (
@@ -21,12 +20,14 @@ const styles = StyleSheet.create({
         height:60,
         backgroundColor: "#1a237e" ,
         justifyContent: 'center',
-        alignItems:"center"
+        alignItems:"center",
+        
       },
       header__text:{
         marginTop:20,
         color : "white",
-        fontWeight:"bold"
+        // fontWeight:"bold"
+        fontFamily:'nunito-bold'
 
       },
   

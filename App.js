@@ -25,7 +25,8 @@ export default function App() {
           
     <TouchableWithoutFeedback onPress={ ()=>{ Keyboard.dismiss() } } >
       { fontLoad == true ? 
-        (<View style={styles.container}>          
+        (<View style={styles.container}>   
+               
               <Navigator />
         </View>): 
         ( <AppLoading

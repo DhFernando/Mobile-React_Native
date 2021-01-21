@@ -1,5 +1,8 @@
 import React , { useState } from 'react'
-import {StyleSheet, View, Text , Button , TouchableOpacity } from 'react-native'
+import {StyleSheet, View,TouchableOpacity  } from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons';
+import {  Card, CardItem, Text, Icon, Right } from 'native-base';
+
 import { FlatList } from 'react-native-gesture-handler'
 
 export default function Home( props ) {
@@ -26,13 +29,6 @@ export default function Home( props ) {
 
     return (
         <View style={styles.container}>
-            
-           <View style={styles.nav_btn}>
-            <Button  title="Goto review "
-                onPress={()=>navigate("ReviewDeatails")}
-                color="#0d47a1"
-                /> 
-           </View>
            <View style={styles.reviews_block}>
                 <FlatList
                     data={reviews}
@@ -40,17 +36,22 @@ export default function Home( props ) {
                     renderItem={(review)=>{
                         return(
                             <TouchableOpacity onPress={()=>navigate("ReviewDeatails", review.item ) }>
-                                <View>
-                                    <View>
-                                        <Text style={ styles.review }>
-                                            {  review.item.title } - { review.item.key }   
-                                        </Text>
-                                    </View>
-                                </View>
+                                <Card>
+                                    <CardItem>
+                                        <MaterialIcons name='stars' size={28} style={styles.styles__icon} />
+                                        <View style={ styles.item }>
+                                            <Text  note numberOfLines={3}> {  review.item.title } - { review.item.key } </Text>
+                                        </View>
+                                        <Right>
+                                            <Icon name="arrow-forward" />
+                                        </Right>
+                                    </CardItem>
+                                </Card>
                             </TouchableOpacity>
                         )
                     }}
                 />
+                
            </View>
         </View>
     )
@@ -71,5 +72,12 @@ const styles = StyleSheet.create({
         backgroundColor:"pink",
         marginBottom:15,
         padding:20
+    },
+    styles__icon:{
+        color:"#ffc107",
+        marginRight:"5%"
+    },
+    item:{
+        width:"70%"
     }
 })

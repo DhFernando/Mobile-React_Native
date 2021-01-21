@@ -16,7 +16,9 @@ export default function App() {
 
   const loadFont = async() => await Font.loadAsync({
       'nunito-regular': require('./src/fonts/Nunito-Regular.ttf'),
-      'nunito-bold': require('./src/fonts/Nunito-Bold.ttf')
+      'nunito-bold': require('./src/fonts/Nunito-Bold.ttf'),
+      "Roboto": require('./src/fonts/Roboto-Regular.ttf'),
+      "Roboto_medium": require('./src/fonts/Roboto-Medium.ttf'),
     })
 
   return (
